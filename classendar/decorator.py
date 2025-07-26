@@ -1,6 +1,7 @@
 from datetime import date
 import re
 
+
 def dated_class(cls):
     """Class decorator for date-versioned classes"""
     original_init = cls.__init__
@@ -16,7 +17,7 @@ def dated_class(cls):
 
     cls.__init__ = __init__
 
-    if original_get:
+    if original_get:  # modify the original get method so that it will invoke the dated object
         async def get(self, date=None, **kwargs):
             date = date or date.today()
             versioned_cls = _get_versioned_subclass(cls, date)
@@ -31,6 +32,7 @@ def dated_class(cls):
     cls._collect_subclasses = classmethod(_collect_subclasses)
 
     return cls
+
 
 def _get_versioned_subclass(cls, target_date):
     if not hasattr(cls, '_subclass_cache'):
@@ -47,6 +49,7 @@ def _get_versioned_subclass(cls, target_date):
         if target_date >= subclass_date:
             return subclass  # get the subclass that is the closest lower than requested date
     return cls
+
 
 def _collect_subclasses(cls):
     subclasses = {}
