@@ -3,7 +3,7 @@
 
 ```mermaid
 timeline
-    title History of Social Media Platform
+    title illustration of classendar dated classes
     ..                     : class Foo
     request version date 2000-01-01 : class Foo_20250101
     ..                    : class Foo_20250101
