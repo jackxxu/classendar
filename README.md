@@ -11,7 +11,7 @@ Classendar is a Python library for managing versioned classes based on dates. It
 
 ## How It Works
 
-You decorate your base class with `@classendar_base`. Then, you create subclasses named with a date suffix (e.g., `Foo_20250701`). When you call the `get` method with a `version_date` date object, the correct subclass is chosen automatically.
+You decorate your base class with `@classendar_base`. Then, you create subclasses named with a date suffix (e.g., `Foo_20250701`, the as of date of the logic). When you call the `get` method with a `version_date` date object, the correct subclass is chosen automatically.
 
 ```mermaid
 timeline
