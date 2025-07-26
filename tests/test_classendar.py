@@ -34,26 +34,26 @@ class Foo_20250901(Foo_20250801):
 @pytest.mark.asyncio
 async def test_base_class():
     foo = Foo(foo_arg="test")
-    result = await foo.get(date=date(2025, 6, 15))  
+    result = await foo.get(version_date=date(2025, 6, 15))  
     assert result == 'Base Foo result'    
 
 
 @pytest.mark.asyncio
 async def test_2nd_layer():
     foo = Foo(foo_arg="test")
-    result = await foo.get(date=date(2025, 7, 15))  
+    result = await foo.get(version_date=date(2025, 7, 15))  
     assert result == 'Foo_20250701 result'
 
 
 @pytest.mark.asyncio
 async def test_3rd_layer():
     foo = Foo(foo_arg="test")
-    result = await foo.get(date=date(2025, 8, 1))  
+    result = await foo.get(version_date=date(2025, 8, 1))  
     assert result == 'Foo_20250801 result'
 
 
 @pytest.mark.asyncio
 async def test_reference_base():
     foo = Foo(foo_arg="test")
-    result = await foo.get(date=date(2025, 9, 1))  
+    result = await foo.get(version_date=date(2025, 9, 1))  
     assert result == 'Foo_20250801 result + Foo_20250801 result'

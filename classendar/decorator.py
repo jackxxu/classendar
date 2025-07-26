@@ -18,12 +18,12 @@ def dated_class(cls):
     cls.__init__ = __init__
 
     if original_get:  # modify the original get method so that it will invoke the dated object
-        async def get(self, date=None, **kwargs):
-            date = date or date.today()
-            versioned_cls = _get_versioned_subclass(cls, date)
+        async def get(self, *args, **kwargs):
+            version_date = kwargs.get('version_date') or date.today()
+            versioned_cls = _get_versioned_subclass(cls, version_date)
             if versioned_cls is not self.__class__:
-                return await versioned_cls(**self._init_kwargs).get(date=date, **kwargs)
-            return await original_get(self, **kwargs)
+                return await versioned_cls(**self._init_kwargs).get(*args, **kwargs)
+            return await original_get(self, *args, **kwargs)
 
         cls.get = get
 
