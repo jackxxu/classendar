@@ -2,7 +2,7 @@ from datetime import date
 import re
 
 
-def dated_class(cls):
+def classendar_base(cls):
     """Class decorator for date-versioned classes"""
     original_init = cls.__init__
 

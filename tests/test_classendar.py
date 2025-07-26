@@ -1,5 +1,5 @@
 import pytest
-from classendar.decorator import dated_class
+from classendar.decorator import classendar_base
 from datetime import date
 
 
@@ -9,7 +9,7 @@ class ParentClass:
         print(f"Foo initialized with foo_arg={foo_arg}")
 
 
-@dated_class
+@classendar_base
 class Foo(ParentClass):
     async def get(self, **kwargs):
         return "Base Foo result"
