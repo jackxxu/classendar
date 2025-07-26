@@ -44,15 +44,15 @@ from datetime import date
 
 @classendar_base
 class Foo:
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Base Foo result"
 
 class Foo_20250701(Foo):  # modified on 7/1/2025
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Foo_20250701 result"
 
 class Foo_20250801(Foo_20250701):  # modified on 8/1/2025
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Foo_20250801 result"
 ```
 

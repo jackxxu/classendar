@@ -11,22 +11,22 @@ class ParentClass:
 
 @classendar_base
 class Foo(ParentClass):
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Base Foo result"
 
 
 class Foo_20250701(Foo):
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Foo_20250701 result"
 
 
 class Foo_20250801(Foo_20250701):
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         return "Foo_20250801 result"
 
 
 class Foo_20250901(Foo_20250801):
-    async def get(self, **kwargs):
+    async def get(self, *args, **kwargs):
         result = await super().get(**kwargs)
         return f"Foo_20250801 result + {result}"
 
