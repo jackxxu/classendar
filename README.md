@@ -17,12 +17,12 @@ You decorate your base class with `@dated_class`. Then, you create subclasses na
 timeline
     title illustration of classendar dated classes
     ..                     : class Foo
-    request version date 2000-01-01 : class Foo_20250101
-    ..                    : class Foo_20250101
-    request version date 2025-01-01 : class Foo_20250101
-    request version date 2025-01-05 : class Foo_20250101
-    .. : class Foo_20250201
-    request version date 2025-07-01 : class Foo_20250201
+    foo.get(version_date = 2000-01-01) : Foo
+    ..                    : class Foo_20250701
+    foo.get(version_date = 2025-01-01) : Foo_20250701
+    foo.get(version_date = 2025-01-05) : Foo_20250701
+    .. : class Foo_20250801
+    foo.get(version_date = 2025-07-01) : Foo_20250801
 ```
 
 
@@ -51,7 +51,7 @@ class Foo_20250701(Foo):
     async def get(self, **kwargs):
         return "Foo_20250701 result"
 
-class Foo_20250801(Foo):
+class Foo_20250801(Foo_20250701):
     async def get(self, **kwargs):
         return "Foo_20250801 result"
 ```
