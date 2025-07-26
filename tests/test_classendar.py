@@ -3,12 +3,14 @@ from classendar.decorator import dated_class
 from datetime import date
 
 
-@dated_class
-class Foo:
+class ParentClass:
     def __init__(self, foo_arg=None, **kwargs):
         self.foo_arg = foo_arg
         print(f"Foo initialized with foo_arg={foo_arg}")
 
+
+@dated_class
+class Foo(ParentClass):
     async def get(self, **kwargs):
         return "Base Foo result"
 
@@ -55,4 +57,3 @@ async def test_reference_base():
     foo = Foo(foo_arg="test")
     result = await foo.get(date=date(2025, 9, 1))  
     assert result == 'Foo_20250801 result + Foo_20250801 result'
-
